@@ -1,11 +1,13 @@
 from django.shortcuts import render
+from homeapp import forms
 
 
 # Create your views here.
 
 def indexView(request):
+    form = forms.ReviewForm
     context = {
-
+        'form': form
     }
     return render(request, 'index.html', context)
 
