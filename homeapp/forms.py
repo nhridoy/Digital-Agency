@@ -6,6 +6,5 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = models.ReviewModel
         fields = '__all__'
-        widgets = {
-            'comment': forms.Textarea(attrs={'style': 'resize: none;'}),
-        }
+        exclude = ['rating', 'comment']
+

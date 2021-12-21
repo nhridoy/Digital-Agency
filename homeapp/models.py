@@ -13,6 +13,7 @@ rating = (
 
 class ReviewModel(models.Model):
     full_name = models.CharField(max_length=255)
+    position = models.CharField(max_length=255)
     email = models.EmailField()
     picture = models.ImageField(upload_to='reviewer')
     rating = models.IntegerField(verbose_name='Rating', blank=False, choices=rating)
@@ -21,3 +22,9 @@ class ReviewModel(models.Model):
 
     def __str__(self):
         return f'{self.full_name} - {self.rating}'
+
+
+class AchievementModel(models.Model):
+    customers = models.IntegerField()
+    presets = models.IntegerField()
+    responses = models.IntegerField()

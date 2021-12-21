@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load my_filter %}
 {% load static %}
 
 {% block cssblock %}
     <style>
-        .star-widget label {
+        .star-widget {
+            float: left;
+            font-size: 30px;
+        }
 
+        .star-widget label {
             float: right;
             transition: all 0.2s ease;
         }
@@ -21,6 +26,17 @@
 
         input:checked ~ label {
             color: #fbbf24;
+        }
+
+        .review-btn {
+            border: 1px solid #28b0a9;
+            background: #fff;
+            transition: .3s;
+        }
+
+        .review-btn:hover {
+            background: #28b0a9;
+            color: #fff;
         }
     </style>
 {% endblock %}
@@ -220,7 +236,7 @@
             </div>
             <div class="row justify-content-center mb-5 pb-5">
                 <div class="col-md-7 text-center heading-section ftco-animate">
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                    <button type="button" class="btn review-btn" data-toggle="modal"
                             data-target="#exampleModal">Add a Review
                     </button>
                 </div>
@@ -236,27 +252,49 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                {{ form|crispy }}
-                                <div class="flex gap-2">
-                                    <div class="star-widget pt-4">
-                                        <input type="radio" name="rating" id="rate_five" value="5" hidden>
-                                        <label for="rate_five"><i class="fa fa-star pl-2"></i></label>
-                                        <input type="radio" name="rating" id="rate_four" value="4" hidden>
-                                        <label for="rate_four"><i class="fa fa-star px-2"></i></label>
-                                        <input type="radio" name="rating" id="rate_three" value="3" hidden>
-                                        <label for="rate_three"><i class="fa fa-star px-2"></i></label>
-                                        <input type="radio" name="rating" id="rate_two" value="2" hidden>
-                                        <label for="rate_two"><i class="fa fa-star px-2"></i></label>
-                                        <input type="radio" name="rating" id="rate_one" value="1" hidden>
-                                        <label for="rate_one"><i class="fa fa-star pr-2"></i></label>
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    {{ form|crispy }}
+                                    <div id="div_id_rating" class="form-group">
+                                        <label for="id_rating"
+                                               class=" requiredField">
+                                            Your Rating<span class="asteriskField">*</span></label>
+                                        <div class="flex gap-2 align-items-center">
+                                            <div class="star-widget">
+                                                <input type="radio" name="rating" id="rate_five" value="5" hidden>
+                                                <label for="rate_five"><i class="fa fa-star pl-2"></i></label>
+                                                <input type="radio" name="rating" id="rate_four" value="4" hidden>
+                                                <label for="rate_four"><i class="fa fa-star px-2"></i></label>
+                                                <input type="radio" name="rating" id="rate_three" value="3" hidden>
+                                                <label for="rate_three"><i class="fa fa-star px-2"></i></label>
+                                                <input type="radio" name="rating" id="rate_two" value="2" hidden>
+                                                <label for="rate_two"><i class="fa fa-star px-2"></i></label>
+                                                <input type="radio" name="rating" id="rate_one" value="1" hidden>
+                                                <label for="rate_one"><i class="fa fa-star pr-2"></i></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="div_id_comment" class="form-group">
+                                        <br>
+                                        <br>
+                                        <label for="id_comment" class="">
+                                            Comment<span class="asteriskField">*</span>
+                                        </label>
+                                        <div class="">
+                                        <textarea required name="comment" cols="40" rows="3" style="resize: none;"
+                                                  class="textarea form-control" id="id_comment"
+                                                  spellcheck="false"></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="next_btn">Next</button>
-                                <button type="button" class="btn btn-primary" id="submit_btn">Add Review</button>
-                            </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" id="next_btn">Next</button>
+                                    <button type="button" class="btn btn-primary" id="back_btn">Back</button>
+                                    <button type="submit" class="btn btn-primary" id="submit_btn">Add Review</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -264,86 +302,34 @@
             <div class="row ftco-animate">
                 <div class="col-md-12">
                     <div class="carousel-testimony owl-carousel ftco-owl">
-                        <div class="item text-center">
-                            <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4"
-                                     style="background-image: url('{% static 'images/person_1.jpg' %}')">
+                        {% for review in reviews %}
+                            <div class="item text-center">
+                                <div class="testimony-wrap p-4 pb-5">
+                                    <div class="user-img mb-4"
+                                         style="background-image: url('{{ review.picture.url }}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
-                                </div>
-                                <div class="text">
-                                    <p class="mb-5">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Dennis Green</p>
-                                    <span class="position">Marketing Manager</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item text-center">
-                            <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4"
-                                     style="background-image: url('{% static 'images/person_2.jpg' %}')">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                                </div>
-                                <div class="text">
-                                    <p class="mb-5">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Dennis Green</p>
-                                    <span class="position">Interface Designer</span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-5">{{ review.comment }}</p>
+
+                                        <div class="flex items-center gap-2 pt-3 text-yellow-400">
+                                            {% for star in review.rating|times %}
+                                                <i class="fa fa-star"></i>
+                                            {% endfor %}
+                                            {% for star in review.rating|sub %}
+                                                <i class="fal fa-star"></i>
+                                            {% endfor %}
+                                        </div>
+
+                                        <p class="name">{{ review.full_name }}</p>
+                                        <span class="position">{{ review.position }}</span> <br>
+                                        <span class="position">{{ review.email }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item text-center">
-                            <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4"
-                                     style="background-image: url('{% static 'images/person_3.jpg' %}')">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                                </div>
-                                <div class="text">
-                                    <p class="mb-5">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Dennis Green</p>
-                                    <span class="position">UI Designer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item text-center">
-                            <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4"
-                                     style="background-image: url('{% static 'images/person_1.jpg' %}')">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                                </div>
-                                <div class="text">
-                                    <p class="mb-5">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Dennis Green</p>
-                                    <span class="position">Web Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item text-center">
-                            <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4"
-                                     style="background-image: url('{% static 'images/person_1.jpg' %}')">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                                </div>
-                                <div class="text">
-                                    <p class="mb-5">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Dennis Green</p>
-                                    <span class="position">System Analytics</span>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -361,7 +347,7 @@
                 <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 text-center">
                         <div class="text">
-                            <strong class="number" data-number="1000">0</strong>
+                            <strong class="number" data-number="{{ achievements.customers }}">0</strong>
                             <span>Customers are satisfied with our professional support</span>
                         </div>
                     </div>
@@ -369,7 +355,7 @@
                 <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 text-center">
                         <div class="text">
-                            <strong class="number" data-number="12000">0</strong>
+                            <strong class="number" data-number="{{ achievements.presets }}">0</strong>
                             <span>Amazing preset options to be mixed and combined</span>
                         </div>
                     </div>
@@ -377,7 +363,7 @@
                 <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 text-center">
                         <div class="text">
-                            <strong class="number" data-number="10000">0</strong>
+                            <strong class="number" data-number="{{ achievements.responses }}">0</strong>
                             <span>Average response time on live chat support channel</span>
                         </div>
                     </div>
@@ -451,30 +437,37 @@
 {% block scriptblock %}
     <script>
         let div_id_full_name = document.getElementById('div_id_full_name');
+        let div_id_position = document.getElementById('div_id_position');
         let div_id_email = document.getElementById('div_id_email');
         let div_id_picture = document.getElementById('div_id_picture');
         let div_id_rating = document.getElementById('div_id_rating');
         let div_id_comment = document.getElementById('div_id_comment');
         let next_btn = document.getElementById('next_btn');
+        let back_btn = document.getElementById('back_btn');
         let submit_btn = document.getElementById('submit_btn');
 
         div_id_rating.classList.add('d-none')
         div_id_comment.classList.add('d-none')
         submit_btn.classList.add('d-none')
+        back_btn.classList.add('d-none')
 
         next_btn.addEventListener('click', (e) => {
             div_id_rating.classList.remove('d-none')
             div_id_comment.classList.remove('d-none')
             submit_btn.classList.remove('d-none')
+            back_btn.classList.remove('d-none')
 
             div_id_full_name.classList.add('d-none')
+            div_id_position.classList.add('d-none')
             div_id_email.classList.add('d-none')
             div_id_picture.classList.add('d-none')
             next_btn.classList.add('d-none')
         })
 
-        $("#exampleModal").on('hidden.bs.modal', function () {
+
+        function btnHide() {
             div_id_full_name.classList.remove('d-none')
+            div_id_position.classList.remove('d-none')
             div_id_email.classList.remove('d-none')
             div_id_picture.classList.remove('d-none')
             next_btn.classList.remove('d-none')
@@ -482,6 +475,10 @@
             div_id_rating.classList.add('d-none')
             div_id_comment.classList.add('d-none')
             submit_btn.classList.add('d-none')
-        })
+            back_btn.classList.add('d-none')
+        }
+
+        $("#exampleModal").on('hidden.bs.modal', btnHide)
+        $("#back_btn").on('click', btnHide)
     </script>
 {% endblock %}
