@@ -144,7 +144,7 @@
             </div>
             <div class="row no-gutters">
                 <div class="block-3 d-md-flex ftco-animate">
-                    <a href="{% url 'home_app:portfolio' %}" class="image" style="background-image: url('static/images/Image-1.jpg'); "></a>
+                    <a href="{% url 'home_app:portfolio' %}" class="image" style="background-image: url('{% static 'images/Image-1.jpg' %}'); "></a>
                     <div class="text">
                         <h4 class="subheading">Illustration</h4>
                         <h2 class="heading"><a href="{% url 'home_app:portfolio' %}">Even the all-powerful Pointing has no control</a>
@@ -156,7 +156,7 @@
                 </div>
                 <div class="block-3 d-md-flex ftco-animate">
                     <a href="{% url 'home_app:portfolio' %}" class="image order-2"
-                       style="background-image: url('static/images/image-2.jpg'); "></a>
+                       style="background-image: url('{% static 'images/image-2.jpg' %}'); "></a>
                     <div class="text order-1">
                         <h4 class="subheading">Application</h4>
                         <h2 class="heading"><a href="{% url 'home_app:portfolio' %}">Even the all-powerful Pointing has no control</a>
@@ -167,7 +167,7 @@
                     </div>
                 </div>
                 <div class="block-3 d-md-flex ftco-animate">
-                    <a href="{% url 'home_app:portfolio' %}" class="image" style="background-image: url('static/images/image-3.jpg'); "></a>
+                    <a href="{% url 'home_app:portfolio' %}" class="image" style="background-image: url('{% static 'images/image-3.jpg' %}'); "></a>
                     <div class="text">
                         <h4 class="subheading">Web Design</h4>
                         <h2 class="heading"><a href="{% url 'home_app:portfolio' %}">Even the all-powerful Pointing has no control</a>
@@ -194,7 +194,7 @@
                     <div class="carousel-testimony owl-carousel ftco-owl">
                         <div class="item text-center">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(static/images/person_1.jpg)">
+                                <div class="user-img mb-4" style="background-image: url('{% static 'images/person_1.jpg' %}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
@@ -209,7 +209,7 @@
                         </div>
                         <div class="item text-center">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(static/images/person_2.jpg)">
+                                <div class="user-img mb-4" style="background-image: url('{% static 'images/person_2.jpg' %}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
@@ -224,7 +224,7 @@
                         </div>
                         <div class="item text-center">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(static/images/person_3.jpg)">
+                                <div class="user-img mb-4" style="background-image: url('{% static 'images/person_3.jpg' %}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
@@ -239,7 +239,7 @@
                         </div>
                         <div class="item text-center">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(static/images/person_1.jpg)">
+                                <div class="user-img mb-4" style="background-image: url('{% static 'images/person_1.jpg' %}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
@@ -254,7 +254,7 @@
                         </div>
                         <div class="item text-center">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(static/images/person_1.jpg)">
+                                <div class="user-img mb-4" style="background-image: url('{% static 'images/person_1.jpg' %}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
@@ -321,7 +321,7 @@
                 <div class="col-md-4 ftco-animate">
                     <div class="blog-entry">
                         <a href="{% url 'home_app:blog-single' %}" class="block-20"
-                           style="background-image: url('static/images/image_1.jpg');">
+                           style="background-image: url('{% static 'images/image_1.jpg' %}');">
                         </a>
                         <div class="text p-4 d-block">
                             <div class="meta mb-3">
@@ -337,7 +337,7 @@
                 <div class="col-md-4 ftco-animate">
                     <div class="blog-entry" data-aos-delay="100">
                         <a href="{% url 'home_app:blog-single' %}" class="block-20"
-                           style="background-image: url('static/images/image_2.jpg');">
+                           style="background-image: url('{% static 'images/image_2.jpg' %}');">
                         </a>
                         <div class="text p-4">
                             <div class="meta mb-3">
@@ -353,7 +353,7 @@
                 <div class="col-md-4 ftco-animate">
                     <div class="blog-entry" data-aos-delay="200">
                         <a href="{% url 'home_app:blog-single' %}" class="block-20"
-                           style="background-image: url('static/images/image_3.jpg');">
+                           style="background-image: url('{% static 'images/image_3.jpg' %}');">
                         </a>
                         <div class="text p-4">
                             <div class="meta mb-3">

@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center">
                     <div class="col-md-10 col-sm-12 ftco-animate mb-4 text-center">
-                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span>
+                        <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home_app:index' %}">Home</a></span>
                             <span>About</span></p>
                         <h1 class="mb-3 bread">About Us</h1>
                     </div>
@@ -21,7 +21,7 @@
     <section class="ftco-section-2 ftco-degree-bg">
         <div class="container d-flex">
             <div class="section-2-blocks-wrapper row d-flex">
-                <div class="img col-sm-12 col-lg-6 order-last" style="background-image: url('images/about.jpg');">
+                <div class="img col-sm-12 col-lg-6 order-last" style="background-image: url('{% static 'images/about.jpg' %}');">
                 </div>
                 <div class="text col-lg-6 order-first ftco-animate">
                     <div class="text-inner align-self-start">
@@ -88,7 +88,7 @@
                     <div class="carousel-testimony owl-carousel ftco-owl">
                         <div class="item text-center">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+                                <div class="user-img mb-4" style="background-image: url('{% static 'images/person_1.jpg' %}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="item text-center">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
+                                <div class="user-img mb-4" style="background-image: url('{% static 'images/person_2.jpg' %}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="item text-center">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
+                                <div class="user-img mb-4" style="background-image: url('{% static 'images/person_3.jpg' %}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
@@ -133,7 +133,7 @@
                         </div>
                         <div class="item text-center">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+                                <div class="user-img mb-4" style="background-image: url('{% static 'images/person_4.jpg' %}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
@@ -148,7 +148,7 @@
                         </div>
                         <div class="item text-center">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+                                <div class="user-img mb-4" style="background-image: url('{% static 'images/person_1.jpg' %}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
