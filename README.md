@@ -36,6 +36,10 @@ py manage.py migrate
 ```commandline
 py manage.py createsuperuser
 ```
+### Run Server
+```commandline
+py manage.py runserver
+```
 
 _N.B: Currently Using sqlite database for development purpose._
 
