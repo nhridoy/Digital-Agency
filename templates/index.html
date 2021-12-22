@@ -301,36 +301,43 @@
             </div>
             <div class="row ftco-animate">
                 <div class="col-md-12">
-                    <div class="carousel-testimony owl-carousel ftco-owl">
-                        {% for review in reviews %}
-                            <div class="item text-center">
-                                <div class="testimony-wrap p-4 pb-5">
-                                    <div class="user-img mb-4"
-                                         style="background-image: url('{{ review.picture.url }}')">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                                    </div>
-                                    <div class="text">
-                                        <p class="mb-5">{{ review.comment }}</p>
-
-                                        <div class="flex items-center gap-2 pt-3 text-yellow-400">
-                                            {% for star in review.rating|times %}
-                                                <i class="fa fa-star"></i>
-                                            {% endfor %}
-                                            {% for star in review.rating|sub %}
-                                                <i class="fal fa-star"></i>
-                                            {% endfor %}
+                    {% if reviews.exists %}
+                        <div class="carousel-testimony owl-carousel ftco-owl">
+                            {% for review in reviews %}
+                                <div class="item text-center">
+                                    <div class="testimony-wrap p-4 pb-5">
+                                        <div class="user-img mb-4"
+                                             style="background-image: url('{{ review.picture.url }}')">
+                                        <span class="quote d-flex align-items-center justify-content-center">
+                                          <i class="icon-quote-left"></i>
+                                        </span>
                                         </div>
+                                        <div class="text">
+                                            <p class="mb-5">{{ review.comment }}</p>
 
-                                        <p class="name">{{ review.full_name }}</p>
-                                        <span class="position">{{ review.position }}</span> <br>
-                                        <span class="position">{{ review.email }}</span>
+                                            <div class="flex items-center gap-2 pt-3 text-yellow-400">
+                                                {% for star in review.rating|times %}
+                                                    <i class="fa fa-star"></i>
+                                                {% endfor %}
+                                                {% for star in review.rating|sub %}
+                                                    <i class="fal fa-star"></i>
+                                                {% endfor %}
+                                            </div>
+
+                                            <p class="name">{{ review.full_name }}</p>
+                                            <span class="position">{{ review.position }}</span> <br>
+                                            <span class="position">{{ review.email }}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        {% endfor %}
-                    </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="text-center">
+                            <p>No Review Yet</p>
+                        </div>
+                    {% endif %}
+
                 </div>
             </div>
         </div>
