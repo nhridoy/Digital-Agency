@@ -6,9 +6,7 @@
 
 ## Install Python (3.9.8 Recommended)
 [Download From Here](https://www.python.org/downloads/release/python-398/)
-```
-https://www.python.org/downloads/release/python-398/
-```
+
 ## Commands to run
 ### Clone
 ```commandline
