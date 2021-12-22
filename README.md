@@ -2,7 +2,7 @@
  
 # Follow these Steps Carefully
 ## Install Git
-[Download From Here](https://git-scm.com/downloads){:target="_blank" rel="noopener"}
+[Download From Here](https://git-scm.com/downloads)
 
 ## Install Python (3.9.8 Recommended)
 [Download From Here](https://www.python.org/downloads/release/python-398/)
